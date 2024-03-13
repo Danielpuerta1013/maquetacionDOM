@@ -59,3 +59,40 @@ function mostrarTarjeta() {
     
 
 }
+
+let inputsT=document.querySelectorAll('#formulario input')
+let inputs=[...inputsT]
+inputs.forEach(input => {
+   
+   input.addEventListener('keyup',validarFormulario)
+//    input.addEventListener('click',validarFormulario)
+});
+
+
+let expresionesRegulares={
+    nombre:/^\p{L}+$/u
+    
+}
+function validarFormulario(e) {    
+    switch (e.target.name) {
+        case "nombre":
+            if (expresionesRegulares.nombre.test(e.target.value)) {
+                console.log('paso la validacion')
+            }else{
+                console.log('no paso la validacion ')
+            }
+            break;
+        case "correo":
+            break
+        case "telefono":
+            break
+        case "fecha_naciemiento":
+            break
+        case "ciudad":
+            break          
+    
+        default:
+            break;
+    }
+}
+
