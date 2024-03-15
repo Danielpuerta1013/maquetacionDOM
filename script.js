@@ -70,25 +70,68 @@ inputs.forEach(input => {
 
 
 let expresionesRegulares={
-    nombre:/^\p{L}+$/u
-    
+    nombre:/^\p{L}+$/u,
+    correo:/\b([\w\.-]+)@([\w\-]+)(\.\w{2,4})(\.\w{2,4})?\b/g,
+    telefono:/^\d{10}$/,
+    fecha_naciemiento:/^\d{4}-\d{2}-\d{2}$/,
+    ciudad:/^\p{L}+$/u    
 }
 function validarFormulario(e) {    
     switch (e.target.name) {
         case "nombre":
             if (expresionesRegulares.nombre.test(e.target.value)) {
-                console.log('paso la validacion')
+                document.getElementById('mensaje_nombre').textContent=""
+                document.getElementById('mensaje_nombre').classList.remove('campoIncorrecto')
+
             }else{
-                console.log('no paso la validacion ')
+                document.getElementById('mensaje_nombre').textContent="campo invalido"
+                document.getElementById('mensaje_nombre').classList.add('campoIncorrecto')
+
             }
             break;
         case "correo":
+            if (expresionesRegulares.correo.test(e.target.value)) {
+                document.getElementById('mensajeEmail').textContent=""
+                document.getElementById('mensajeEmail').classList.remove('campoIncorrecto')
+            }else{
+                document.getElementById('mensajeEmail').textContent="campo invalido"
+                document.getElementById('mensajeEmail').classList.add('campoIncorrecto')
+            }
+
             break
         case "telefono":
+            if (expresionesRegulares.telefono.test(e.target.value)) {
+                document.getElementById('mensajeTelefono').textContent=""
+                document.getElementById('mensajeTelefono').classList.remove('campoIncorrecto')
+
+            }else{
+                document.getElementById('mensajeTelefono').textContent="campo invalido"
+                document.getElementById('mensajeTelefono').classList.add('campoIncorrecto')
+            }
+
             break
         case "fecha_naciemiento":
+            if (expresionesRegulares.fecha_naciemiento.test(e.target.value)) {
+                document.getElementById('mensajeFecha').textContent=""
+                document.getElementById('mensajeFecha').classList.remove('campoIncorrecto')
+
+            }else{
+                document.getElementById('mensajeFecha').textContent="campo invalido"
+                document.getElementById('mensajeFecha').classList.add('campoIncorrecto')
+            }
+
             break
         case "ciudad":
+            if (expresionesRegulares.ciudad.test(e.target.value)) {
+                document.getElementById('mensajeCiudad').textContent=""
+                document.getElementById('mensajeCiudad').classList.remove('campoIncorrecto')
+
+            }else{
+                document.getElementById('mensajeCiudad').textContent="campo invalido"
+                document.getElementById('mensajeCiudad').classList.add('campoIncorrecto')
+            }
+
+
             break          
     
         default:
